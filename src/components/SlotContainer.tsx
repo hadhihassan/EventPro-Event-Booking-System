@@ -22,7 +22,7 @@ const SlotsContainer: React.FC<SlotsContainerProps> = (
             <div className='md:w-6/12 grow border-r border-[#bda3fd] p-2'>
                 {/* Slots */}
                 <div className='flex justify-between'>
-                    <p className='bg-[#bda3fd] p-2 text-white font-semibold rounded'>Event Name - {event?.availableSlots} slots left</p>
+                    <p className='bg-[#bda3fd] p-2 text-white font-semibold rounded'>{event.name} - {event?.availableSlots} slots left</p>
                     <button className='bg-[#bda3fd] p-2 text-white font-semibold rounded' onClick={() => bookSlot(event?.name)}>Book Now</button>
                 </div>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-3 m-5">
