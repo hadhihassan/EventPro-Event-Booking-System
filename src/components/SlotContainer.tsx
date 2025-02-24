@@ -27,15 +27,26 @@ const SlotsContainer: React.FC<SlotsContainerProps> = (
                 </div>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-3 m-5">
                     {event?.bookings?.map((slot) => (
-                        <div className='flex flex-col items-center gap-1' key={slot?.id}>
-                            <div className="bg-green-200 h-20 w-20 rounded-md" data-tooltip-target="tooltip-animation"></div>
-                            <button className='text-white text-xs bg-[#bda3fd] w-20 rounded-md' onClick={() => slotCancel(slot?.id, event?.id)}>Cancel</button>
+                        <div className="flex flex-col items-center gap-1 relative group" key={slot?.id}>
+                            <div className="bg-green-200 h-20 w-20 rounded-md relative">
+                                <div className="absolute bottom-full mb-2 w-40 hidden group-hover:flex items-center justify-center bg-black text-white text-xs rounded-md px-2 py-1">
+                                    Slot ID: {slot?.id}
+                                    Date : {formatTime(slot?.timestamp)}
+                                </div>
+                            </div>
+                            <button
+                                className="text-white text-xs bg-[#bda3fd] w-20 rounded-md"
+                                onClick={() => slotCancel(slot?.id, event?.id)}
+                            >
+                                Cancel
+                            </button>
                         </div>
                     ))}
                     {
                         Array.from({ length: (10 - event.bookings.length) }).map((item, index) => (
                             <div className='flex flex-col items-center gap-1' key={index}>
                                 <div className="border border-green-200 h-20 w-20 rounded-md" data-tooltip-target="tooltip-animation"></div>
+
                             </div>
                         ))
                     }
@@ -54,6 +65,9 @@ const SlotsContainer: React.FC<SlotsContainerProps> = (
                             <p>{formatTime(slot?.timestamp)} : Date</p>
                         </li>
                     ))}
+                    {
+                        event?.waitingList.length < 1 && <p className='bg-gray-100 text-center font-semibold text-xs rounded'>No Waiting Slots</p>
+                    }
                 </ol>
                 {/* Booking History */}
                 <div className="mt-4 text-end">
@@ -64,6 +78,9 @@ const SlotsContainer: React.FC<SlotsContainerProps> = (
                                 {formatTime(entry?.timestamp)}:  (booking Id: {entry?.id}) {entry?.action}<span className='px-2'>-</span>
                             </li>
                         ))}
+                        {
+                            event?.history.length < 1 && <p className='bg-gray-100 text-center font-semibold rounded text-xs'>No </p>
+                        }
                     </ul>
                 </div>
             </div>
