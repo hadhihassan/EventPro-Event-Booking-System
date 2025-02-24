@@ -6,14 +6,17 @@ This project is a robust event booking interface built using React, TypeScript, 
 
 ## Features
 
-- Client Features: Create job posts, manage contract, and oversee project creation.
-- Freelancer Features: Send proposals, manage milestones, and receive payments upon milestone completion.
-- Efficient talent and freelancer search and milestone tracking.
+- Slot Booking: Users can book slots for events. If slots are available, the booking is confirmed. Otherwise, users can join a waiting list.
+- Cancellation: Users can cancel their bookings, freeing up slots for others.
+- Waiting List: When all slots are occupied, users can join a waiting list. If a slot becomes available, the first user on the waiting list is automatically allocated the slot.
+- Persistence: All data (available slots, bookings, waiting list) is stored in localStorage and persists across page refreshes.
+- Reset Option: Users can reset the booking system to its initial state.
+- Responsive UI: The interface is built using Tailwind CSS, ensuring a modern and responsive design.
 
 
 ## Technologies Used
 
-- Frontend: React.js, Tailwind CSS
+- Frontend: React.js, Tailwind CSS, Typescript
 
 ## Environment Variables
 
