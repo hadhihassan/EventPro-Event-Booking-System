@@ -84,7 +84,7 @@ const useBookingStore = (store:BookingSystemState, setStore:React.Dispatch<React
                             id: Math.floor(100000 + Math.random() * 900000).toString(),
                             timestamp: new Date().toISOString(),
                         };
-                        toast.success('No slots available. Please join the waiting list.')
+                        toast.success('No slots available. Your joined the waiting list.')
                         return {
                             ...event,
                             waitingList: [...event.waitingList, newWaiting],
